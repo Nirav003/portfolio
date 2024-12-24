@@ -14,11 +14,25 @@ const initialHomeFormData = {
 }
 
 const initialAboutFormData = {
-    about: "",
+    aboutMe: "",
     noOfProjects: "",
     yearOfExperience: "",
     noOfClients: "",
     skills: ""
+}
+
+const initialExperienceFormData = {
+    position: "",
+    company: "",
+    duration: "",
+    location: "",
+    jobProfile: "",
+}
+
+const initialEducationFormData = {
+    degree: "",
+    year: "",
+    college: "",
 }
 
 export default function AdminView() {
@@ -26,6 +40,8 @@ export default function AdminView() {
     const [currentSelectedTab, setCurrentSelectedTab] = useState('home');
     const [homeViewFormData, setHomeViewFormData] = useState(initialHomeFormData);
     const [aboutViewFormData, setAboutViewFormData] = useState(initialAboutFormData);
+    const [experienceViewFormData, setExperienceViewFormData] = useState(initialExperienceFormData);
+    const [educationViewFormData, setEducationViewFormData] = useState(initialEducationFormData);
 
     const menuItem = [
         {
@@ -47,12 +63,18 @@ export default function AdminView() {
         {
             id: 'experience',
             label: 'Experience',
-            Component: <AdminExperienceView />,
+            Component: <AdminExperienceView
+                formData={experienceViewFormData}
+                setFormData={setExperienceViewFormData}
+            />,
         },
         {
             id: 'education',
             label: 'Education',
-            Component: <AdminEducationView />,
+            Component: <AdminEducationView
+                formData={educationViewFormData}
+                setFormData={setEducationViewFormData}
+            />,
         },
         {
             id: 'project',
@@ -88,7 +110,9 @@ export default function AdminView() {
             <div className="mt-10 p-10">
                 {
                     menuItem.map((item) => (
-                        item.id === currentSelectedTab && item.Component
+                        <div key={item.id}>
+                            {item.id === currentSelectedTab && item.Component}
+                        </div>
                     ))
                 }
             </div>

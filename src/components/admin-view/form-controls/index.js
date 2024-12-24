@@ -6,9 +6,9 @@ export default function FormControls({ controls, formData, setFormData }) {
     return (
         controls.map((item, i) => (
             <div key={i} className="mb-4">
-                <level className='block text-gray-700 text-sm font-bold mb-2'>
+                <label className='block text-gray-700 text-sm font-bold mb-2'>
                     {item.label}
-                </level>
+                </label>
                 <input
                     className="shadow border rounded w-full py-2 px-3 text-gray-700 tracking-wide focus:outline-none focus:shadow-outline"
                     placeholder={item.placeholder}
