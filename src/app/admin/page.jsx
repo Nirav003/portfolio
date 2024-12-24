@@ -13,10 +13,19 @@ const initialHomeFormData = {
     summary: ""
 }
 
+const initialAboutFormData = {
+    about: "",
+    noOfProjects: "",
+    yearOfExperience: "",
+    noOfClients: "",
+    skills: ""
+}
+
 export default function AdminView() {
 
     const [currentSelectedTab, setCurrentSelectedTab] = useState('home');
     const [homeViewFormData, setHomeViewFormData] = useState(initialHomeFormData);
+    const [aboutViewFormData, setAboutViewFormData] = useState(initialAboutFormData);
 
     const menuItem = [
         {
@@ -30,7 +39,10 @@ export default function AdminView() {
         {
             id: 'about',
             label: 'About',
-            Component: <AdminAboutView />,
+            Component: <AdminAboutView
+                formData={aboutViewFormData}
+                setFormData={setAboutViewFormData}
+            />,
         },
         {
             id: 'experience',
